@@ -1,0 +1,224 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================================
+   VEXFO FIBRA — Design System
+   Paleta baseada na logo oficial (src/constants/colors.ts é a fonte de verdade)
+   ========================================================================= */
+@layer base {
+  :root {
+    color-scheme: light;
+
+    /* ---- Superfícies ---- */
+    --background: 216 33.3% 97.1%; /* Cinza claro #F5F7FA */
+    --foreground: 240.8 71.2% 21.8%; /* Azul escuro #11105F */
+
+    --card: 0 0% 100%;
+    --card-foreground: 240.8 71.2% 21.8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240.8 71.2% 21.8%;
+
+    /* ---- Marca ---- */
+    --primary: 221.2 83.2% 53.3%; /* Azul #2563EB */
+    --primary-foreground: 0 0% 100%;
+
+    --primary-deep: 240.8 71.2% 21.8%; /* Azul escuro #11105F */
+    --primary-deep-foreground: 0 0% 100%;
+
+    --accent: 190.1 81.8% 50.4%; /* Ciano #19C5E8 */
+    --accent-foreground: 240.8 71.2% 21.8%;
+
+    --success: 102 63.1% 59.6%; /* Verde #7ED957 */
+    --success-foreground: 143 55% 18%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 27 90% 22%;
+
+    --destructive: 0 78% 56%;
+    --destructive-foreground: 0 0% 100%;
+
+    --muted: 216 33.3% 97.1%;
+    --muted-foreground: 215.4 16.3% 46.9%; /* Cinza de texto #64748B */
+
+    --secondary: 214 32% 94%;
+    --secondary-foreground: 240.8 71.2% 21.8%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 221.2 83.2% 53.3%;
+
+    --radius: 1rem;
+
+    /* ---- Gradientes ---- */
+    --gradient-brand: linear-gradient(
+      135deg,
+      hsl(var(--primary-deep)) 0%,
+      hsl(var(--primary)) 58%,
+      hsl(var(--accent)) 100%
+    );
+    --gradient-hero: linear-gradient(
+      145deg,
+      hsl(var(--primary-deep)) 0%,
+      hsl(232 72% 32%) 45%,
+      hsl(var(--primary)) 100%
+    );
+    --gradient-cyan: linear-gradient(
+      135deg,
+      hsl(var(--primary)) 0%,
+      hsl(var(--accent)) 100%
+    );
+    --gradient-success: linear-gradient(
+      135deg,
+      hsl(var(--success)) 0%,
+      hsl(160 62% 44%) 100%
+    );
+    --gradient-surface: linear-gradient(
+      180deg,
+      hsl(0 0% 100%) 0%,
+      hsl(var(--muted)) 100%
+    );
+    --gradient-backdrop: radial-gradient(
+        1100px 600px at 12% -10%,
+        hsl(var(--accent) / 0.22),
+        transparent 60%
+      ),
+      radial-gradient(
+        900px 520px at 100% 8%,
+        hsl(var(--primary) / 0.28),
+        transparent 62%
+      ),
+      linear-gradient(
+        160deg,
+        hsl(var(--primary-deep)) 0%,
+        hsl(232 60% 12%) 55%,
+        hsl(var(--primary-deep)) 100%
+      );
+
+    /* ---- Sombras ---- */
+    --shadow-card: 0 1px 2px -1px hsl(var(--primary-deep) / 0.08),
+      0 10px 26px -16px hsl(var(--primary-deep) / 0.22);
+    --shadow-elevated: 0 18px 44px -20px hsl(var(--primary-deep) / 0.32);
+    --shadow-brand: 0 14px 30px -14px hsl(var(--primary) / 0.55);
+    --shadow-success: 0 14px 30px -16px hsl(150 60% 34% / 0.5);
+
+    /* ---- Movimento ---- */
+    --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 240.8 71.2% 21.8%;
+    --sidebar-primary: 221.2 83.2% 53.3%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 216 33.3% 97.1%;
+    --sidebar-accent-foreground: 240.8 71.2% 21.8%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 221.2 83.2% 53.3%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    height: 100%;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply font-sans text-foreground antialiased;
+    background-color: hsl(var(--muted));
+    overflow: hidden;
+    overscroll-behavior: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  input,
+  textarea {
+    font-size: 16px; /* evita zoom automático no iOS */
+  }
+}
+
+@layer utilities {
+  /* Áreas seguras (notch, status bar, navigation bar) */
+  .pt-safe {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .pl-safe {
+    padding-left: env(safe-area-inset-left, 0px);
+  }
+  .pr-safe {
+    padding-right: env(safe-area-inset-right, 0px);
+  }
+  .px-safe {
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+  }
+
+  /* Rolagem interna das telas: sem barra visível, com inércia no iOS */
+  .app-scroll {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    scrollbar-width: none;
+  }
+  .app-scroll::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+
+  .backdrop-app {
+    background: var(--gradient-backdrop);
+  }
+
+  /* Retorno visual ao toque em cards e linhas clicáveis */
+  .pressable {
+    @apply transition-transform duration-200;
+  }
+  .pressable:active {
+    transform: scale(0.97);
+  }
+
+  .text-gradient-brand {
+    background: var(--gradient-cyan);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .glow-success {
+    box-shadow: 0 0 0 6px hsl(var(--success) / 0.16);
+  }
+
+  .glow-brand {
+    box-shadow: 0 0 0 8px hsl(var(--accent) / 0.18);
+  }
+
+  .logo-glow {
+    filter: drop-shadow(0 18px 34px hsl(var(--primary) / 0.28));
+  }
+}
